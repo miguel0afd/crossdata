@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Crossdata by Stratio</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Crossdata</h1>
+          <h2>Easy access to big things</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/Stratio/crossdata/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/Stratio/crossdata/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/Stratio/crossdata" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>About</h1>
+
+<p>Crossdata (aka Meta) is a distributed framework that unifies the interaction with batch and streaming sources supporting multiple datastore technologies thanks to its generic architecture and a custom SQL-like language with support for streaming queries. Supporting multiple architectures imposes two main challenges: how to normalize the access to the datastores, and how to cope with datastore limitations. To access multiple technologies Crossdata defines a common unifying interface containing the set of operations that a datastore may support. New connectors can be easily added to increase its connectivity capabilities. Two types of connectors are defined: native and spark-based. Native connectors are faster for simple operations, while Spark-based connectors offer a larger set of functionality. The Crossdata planner decides which connector will be used for any request based its characteristics. We offer a shell, Java/REST APIs, and ODBC for BI.</p>
+
+<h2>
+<a name="full-documentation" class="anchor" href="#full-documentation"><span class="octicon octicon-link"></span></a>Full documentation</h2>
+
+<p>See the Wiki for full documentation, examples, operational details and other information.</p>
+
+<p>See the <a href="">Javadoc</a> and <a href="">Language reference</a> for the internal details.</p>
+
+<h2>
+<a name="prerequisites" class="anchor" href="#prerequisites"><span class="octicon octicon-link"></span></a>Prerequisites</h2>
+
+<p>In order to execute Crossdata, the following elements are required:</p>
+
+<ol>
+<li>A working installation of Cassandra. The Stratio-cassandra fork is required to support LUCENE indexes.</li>
+<li>A working installation of Stratio Deep. Otherwise, advanced capabilities such as SELECT with INNER JOIN will not be available.</li>
+</ol><h2>
+<a name="compiling-crossdata" class="anchor" href="#compiling-crossdata"><span class="octicon octicon-link"></span></a>Compiling Crossdata</h2>
+
+<p>Compiling Crossdata involves generating a set of files (.tokens, Lexers, and Parsers) from the different grammar files. To automatically build Stratio Crossdata execute the following command:</p>
+
+<pre><code>   &gt; mvn clean compile install
+</code></pre>
+
+<h2>
+<a name="running-the-crossdata-server" class="anchor" href="#running-the-crossdata-server"><span class="octicon octicon-link"></span></a>Running the crossdata-server</h2>
+
+<pre><code>   &gt; mvn exec:java -DskipTests -pl meta-server -Dexec.mainClass="com.stratio.meta.server.MetaApplication"
+</code></pre>
+
+<h2>
+<a name="running-the-crosdata-shell" class="anchor" href="#running-the-crosdata-shell"><span class="octicon octicon-link"></span></a>Running the crosdata-shell</h2>
+
+<p>The crossdata-shell allows users to launch interactive queries against a set of Crossdata servers. 
+Works both in Unix and Windows.
+The shell features:</p>
+
+<ul>
+<li>History support (arrow navigation)</li>
+<li>History search (ctrl-r)</li>
+<li>Token completion (tab)</li>
+<li>Help command</li>
+</ul><pre><code>   &gt; mvn exec:java -pl meta-sh -Dexec.mainClass="com.stratio.meta.sh.Metash"
+</code></pre>
+
+<p>The shell also supports asynchronous query execution by means of the --async parameter. This execution mode is required for streaming queries.</p>
+
+<pre><code>   &gt; mvn exec:java -pl meta-sh -Dexec.mainClass="com.stratio.meta.sh.Metash" -Dexec.args="--async"
+</code></pre>
+
+<p>Additionally, you can execute an script upon launching the shell. The script will be executed first, and the prompt will be shown afterwards.</p>
+
+<pre><code>   &gt; mvn exec:java -pl meta-sh -Dexec.mainClass="com.stratio.meta.sh.Metash" -Dexec.args="--script /path/script.metaql"
+</code></pre>
+
+<h2>
+<a name="packaging" class="anchor" href="#packaging"><span class="octicon octicon-link"></span></a>Packaging</h2>
+
+<pre><code>   &gt; mvn package
+</code></pre>
+
+<p>See <a href="https://github.com/Stratio/stratio-meta/edit/release/0.0.4/meta-dist/src/main/include/README.md">this link</a> to know start/stop the server and the shell from the dist packages</p>
+
+<h2>
+<a name="useful-commands" class="anchor" href="#useful-commands"><span class="octicon octicon-link"></span></a>Useful commands</h2>
+
+<p>Once the shell is running, you can exit the program introducing the word <strong>exit</strong> or <strong>quit</strong> in the query prompt. A command help system is available by introducing the command <strong>help</strong>. A help entry is available per command, to check specify help topics use <strong>help command</strong>.</p>
+
+<h2>
+<a name="more-about-the-project" class="anchor" href="#more-about-the-project"><span class="octicon octicon-link"></span></a>More about the project</h2>
+
+<p>You can find more information about this project (tutorials, examples, etc...) in <a href="http://wordpress.dev.strat.io/">http://wordpress.dev.strat.io/</a></p>
+
+<h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>Stratio Crossdata is licensed as <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache2</a></p>
+
+<p>Licensed to STRATIO (C) under one or more contributor license agreements.<br>
+See the NOTICE file distributed with this work for additional information 
+regarding copyright ownership.  The STRATIO (C) licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at</p>
+
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+
+<p>Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.</p>
+        </section>
+
+        <footer>
+          Crossdata is maintained by <a href="https://github.com/Stratio">Stratio</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
