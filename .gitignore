@@ -1,0 +1,6 @@
+.idea
+atlassian-ide-plugin.xml
+*.iml
+meta-common/target
+*/target
+meta-core/src/main/java/com/stratio/meta/core/grammar/generated
