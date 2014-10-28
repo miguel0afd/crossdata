@@ -41,7 +41,7 @@
 
 <p>See the Wiki for full documentation, examples, operational details and other information.</p>
 
-<p>See the <a href="">Javadoc</a> and <a href="">Language reference</a> for the internal details.</p>
+<p>See the <a href="">Javadoc</a> and <a href="_doc/Grammar.md">Language reference</a> for the internal details.</p>
 
 <h2>
 <a name="compiling-crossdata" class="anchor" href="#compiling-crossdata"><span class="octicon octicon-link"></span></a>Compiling Crossdata</h2>
@@ -52,15 +52,15 @@
 </code></pre>
 
 <h2>
-<a name="running-the-crossdata-server" class="anchor" href="#running-the-crossdata-server"><span class="octicon octicon-link"></span></a>Running the crossdata-server</h2>
+<a name="running-the-comstratiocrossdata-server" class="anchor" href="#running-the-comstratiocrossdata-server"><span class="octicon octicon-link"></span></a>Running the com.stratio.crossdata-server</h2>
 
-<pre><code>   &gt; mvn exec:java -DskipTests -pl meta-server -Dexec.mainClass="com.stratio.meta.server.MetaApplication"
+<pre><code>   &gt; mvn exec:java -DskipTests -pl crossdata-server -Dexec.mainClass="com.stratio.crossdata.server.MetaApplication"
 </code></pre>
 
 <h2>
 <a name="running-the-crosdata-shell" class="anchor" href="#running-the-crosdata-shell"><span class="octicon octicon-link"></span></a>Running the crosdata-shell</h2>
 
-<p>The crossdata-shell allows users to launch interactive queries against a set of Crossdata servers. 
+<p>The com.stratio.crossdata-shell allows users to launch interactive queries against a set of Crossdata servers. 
 Works both in Unix and Windows.
 The shell features:</p>
 
@@ -71,17 +71,18 @@ The shell features:</p>
 <li>Help command</li>
 </ul>
 
-<pre><code>   &gt; mvn exec:java -pl meta-sh -Dexec.mainClass="com.stratio.meta.sh.Metash"
+<pre><code>   &gt; mvn exec:java -pl crossdata-shell -Dexec.mainClass="com.stratio.crossdata.sh.Shell"
 </code></pre>
 
-<p>The shell also supports asynchronous query execution by means of the --async parameter. This execution mode is required for streaming queries.</p>
+<p>The shell also supports synchronous query execution by means of the --sync parameter. This execution mode is required for streaming queries.</p>
 
-<pre><code>   &gt; mvn exec:java -pl meta-sh -Dexec.mainClass="com.stratio.meta.sh.Metash" -Dexec.args="--async"
+<pre><code>   &gt; mvn exec:java -pl crossdata-shell -Dexec.mainClass="com.stratio.crossdata.sh.Shell" -Dexec.args="--sync"
 </code></pre>
 
 <p>Additionally, you can execute an script upon launching the shell. The script will be executed first, and the prompt will be shown afterwards.</p>
 
-<pre><code>   &gt; mvn exec:java -pl meta-sh -Dexec.mainClass="com.stratio.meta.sh.Metash" -Dexec.args="--script /path/script.metaql"
+<pre><code>   &gt; mvn exec:java -pl crossdata-shell -Dexec.mainClass="com.stratio.crossdata.sh.Shell" -Dexec
+   .args="--script /path/script.metaql"
 </code></pre>
 
 <h2>
@@ -90,7 +91,7 @@ The shell features:</p>
 <pre><code>   &gt; mvn package
 </code></pre>
 
-<p>See <a href="https://github.com/Stratio/stratio-meta/edit/release/0.0.4/meta-dist/src/main/include/README.md">this link</a> to know start/stop the server and the shell from the dist packages</p>
+<p>See <a href="https://github.com/Stratio/crossdata/edit/release/0.0.4/meta-dist/src/main/include/README.md">this link</a> to know start/stop the server and the shell from the dist packages</p>
 
 <h2>
 <a name="useful-commands" class="anchor" href="#useful-commands"><span class="octicon octicon-link"></span></a>Useful commands</h2>
@@ -98,14 +99,35 @@ The shell features:</p>
 <p>Once the shell is running, you can exit the program introducing the word <strong>exit</strong> or <strong>quit</strong> in the query prompt. A command help system is available by introducing the command <strong>help</strong>. A help entry is available per command, to check specify help topics use <strong>help command</strong>.</p>
 
 <h2>
-<a name="more-about-the-project" class="anchor" href="#more-about-the-project"><span class="octicon octicon-link"></span></a>More about the project</h2>
-
-<p>You can find more information about this project (tutorials, examples, etc...) in <a href="http://wordpress.dev.strat.io/">http://wordpress.dev.strat.io/</a></p>
-
-<h2>
 <a name="send-issues-to-jira" class="anchor" href="#send-issues-to-jira"><span class="octicon octicon-link"></span></a>Send issues to Jira</h2>
 
-<p>You can send us issues in <a href="https://crossdata.atlassian.net">https://crossdata.atlassian.net</a></p>
+<p>You can send us issues in <a href="https://com.stratio.crossdata.atlassian.net">https://com.stratio.crossdata.atlassian.net</a></p>
+
+<h2>
+<a name="grammar" class="anchor" href="#grammar"><span class="octicon octicon-link"></span></a>Grammar</h2>
+
+<p>Grammar specification for this release can be found <a href="_doc/Grammar.md">here</a>.</p>
+
+<h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h2>
+
+<p>In this <a href="_doc/GettingStarted.md">link</a> you can follow an example of Crossdata with a Cassandra Connector as an access 
+to a Cassandra data store.</p>
+
+<h2>
+<a name="connectors" class="anchor" href="#connectors"><span class="octicon octicon-link"></span></a>Connectors</h2>
+
+<p>Crossdata can use this connectors:</p>
+
+<p><a href="https://github.com/Stratio/stratio-connector-cassandra">Cassandra Connector</a></p>
+
+<p><a href="https://github.com/Stratio/stratio-connector-deep">Stratio Deep Connector</a></p>
+
+<p><a href="https://github.com/Stratio/stratio-connector-mongodb">MongoDB Connector</a></p>
+
+<p><a href="https://github.com/Stratio/stratio-connector-elasticsearch">ElasticSearch Connector</a></p>
+
+<p><a href="https://github.com/Stratio/stratio-connector-streaming">Stratio Streaming Connector</a></p>
 
 <h1>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
@@ -134,16 +156,16 @@ under the License.</p>
           This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
         </footer>
 
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        
-          ga('create', 'UA-55762512-1', 'auto');
-          ga('send', 'pageview');
-
-        </script>
+                  <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-55762512-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
 
       </div>
     </div>
