@@ -4,3 +4,5 @@ atlassian-ide-plugin.xml
 meta-common/target
 */target
 meta-core/src/main/java/com/stratio/meta/core/grammar/generated
+*.tokens
+*.java

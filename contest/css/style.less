@@ -1,0 +1,323 @@
+@import (less) "bootstrap.css";
+
+@font-face {
+    font-family: 'Brandon';
+    font-style:italic;
+    font-weight:normal;
+    src: url('../fonts/brandon_light_it.otf');
+}
+@font-face {
+    font-family: 'Brandon';
+    font-style:normal;
+    font-weight:normal;
+    src: url('../fonts/brandon_light.otf');
+}
+@font-face {
+    font-family: 'Brandon';
+    font-style:italic;
+    font-weight:bold;
+    src: url('../fonts/brandon_reg_it.otf');
+}
+@font-face {
+    font-family: 'Brandon';
+    font-style:normal;
+    font-weight:bold;
+    src: url('../fonts/brandon_reg.otf');
+}
+@font-face {
+    font-family: 'Brandon';
+    font-style:italic;
+    font-weight:100;
+    src: url('../fonts/brandon_med_it.otf');
+}
+@font-face {
+    font-family: 'Brandon';
+    font-style:normal;
+    font-weight:100;
+    src: url('../fonts/brandon_med.otf');
+}
+
+
+@font-face {
+    font-family: 'Brandon';
+    font-style:italic;
+    font-weight:300;
+    src: url('../fonts/brandon_bld_it.otf');
+}
+@font-face {
+    font-family: 'Brandon';
+    font-style:normal;
+    font-weight:300;
+    src: url('../fonts/brandon_bld.otf');
+}
+
+@font-face {
+    font-family: 'Brandon';
+    font-style:italic;
+    font-weight:500;
+    src: url('../fonts/brandon_blk_it.otf');
+}
+@font-face {
+    font-family: 'Brandon';
+    font-style:normal;
+    font-weight:500;
+    src: url('../fonts/brandon_blk.otf');
+}
+
+
+@dark-blue: #007398;
+@dark-gray:#333333;
+@stratio-blue:#2BB6E3;
+@background-yellow:#f7f4e8;
+@light-gray:#999999;
+
+body{
+  font-family:"Brandon";
+  background-color:#f7f4e8;
+}
+
+h3 {
+  font-weight:100;
+  text-transform: uppercase;
+}
+
+.topbar{
+  background-color:@dark-blue;
+  a{
+    color:white;
+  }
+}
+
+.interest-urls{
+  .text-right;
+  padding-top:0.2em;
+  padding-bottom:0.2em;
+  ul{
+    padding: 0;
+    margin: 0;
+  }
+  p{
+    margin: 0;
+  }
+}
+
+.header{
+  background-color:@stratio-blue;
+  color:white;
+  padding-top:0.2em;
+  padding-bottom:0.2em;
+  h1{
+    margin:0;
+    padding-top:0.1em;
+  }
+  ul{
+    padding-top:0.2em;
+  }
+  a{
+    color:white;
+  }
+}
+
+.navlinks{
+  .text-right;
+  margin:0;
+  ul li{
+    margin:0 0 0 2em;
+  }
+}
+
+.main {
+  padding:3em 0;
+  background-color:@dark-gray;
+  background-image:url("../img/background.png");
+  background-position:center top;
+  background-repeat:no-repeat;
+
+}
+
+.challenge{
+  color:white;
+  h2 {
+    font-size:3em;
+    word-spacing:-1px;
+  }
+  .claim {
+    line-height: 100%;
+    font-size: 3em;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+
+  }
+  .deadline{
+    font-weight:300;
+    font-size:1.7em;
+  }
+}
+.trophy{
+  padding:0.5em;
+  .text-center;
+}
+
+
+.compete{
+  background-color:white;
+  padding-top:3em;
+  .step{
+    h3{
+      font-size:1.6em;
+      text-align:center;
+    }
+    p{
+      margin:0;
+      font-size:1.6em;
+      text-align:justify;
+    }
+    .step-image{
+      text-align:center;
+    }
+  }
+}
+
+.register-now{
+  padding:2em 0;
+  color:white;
+  background-color:white;
+
+  .box{
+    margin:0px;
+    padding:1em;
+    background-color:@dark-gray;
+    font-weight:bold;
+    font-size: 2em;
+    word-spacing: 1px;
+    p{
+      margin:0;
+      font-size: 1em;
+      line-height:160%;
+      letter-spacing:1px;
+      word-spacing: 5px;
+    }
+    .register-button{
+      background-color:@stratio-blue;
+      color:white;
+      text-transform:uppercase;
+      font-weight:bold;
+      word-spacing: 3px;
+
+    }
+  }
+}
+.ideas{
+  background-color:white;
+  padding-bottom:2.5em;
+  h2{
+    font-size:3em;
+    color:@stratio-blue;
+    font-weight:bold;
+  }
+  p{
+    font-size:2.5em;
+  }
+  .list-examples{
+    margin:0;
+    .example{
+      margin-bottom:1em;
+      margin-top: 1em;
+      color:white;
+      text-align:center;
+    }
+    .example-box{
+      padding:10px;
+      background-color:@stratio-blue;
+    }
+  }
+}
+.prize{
+  background-color:@stratio-blue;
+  color:white;
+  .desc{
+    margin-top:3.1em;
+  }
+  h2{
+    font-size:3em;
+    font-weight:bold;
+    text-transform:uppercase;
+    margin-bottom:0.5em;
+  }
+  p{
+    font-size:2.6em;
+  }
+  .pi{
+    text-align:center;
+  }
+}
+
+.learn{
+  background-color:white;
+  padding-top:3em;
+  padding-bottom:3em;
+  .desc{
+    h2{
+      color:@stratio-blue;
+    }
+    p{
+
+    }
+    img{
+      vertical-align:text-bottom;
+    }
+  }
+  h2{
+    font-size:3em;
+    font-weight:bold;
+    text-transform:uppercase;
+  }
+  p{
+    font-size:2.6em;
+    margin-bottom:1em;
+  }
+  a{
+    color:@stratio-blue;
+  }
+  .questions{
+    text-align:center;
+    background-color:@stratio-blue;
+
+    h2{
+      color:white;
+    }
+    p{
+      margin:0;
+      padding:0;
+    }
+  }
+}
+.powered{
+  background-color:@light-gray;
+  padding:1em;
+  h2{
+    font-size:3em;
+    font-weight:100;
+    text-transform:uppercase;
+  }
+  .stratio-logo{
+    padding-top:0.53em;
+  }
+  p{
+    padding-top:1em;
+    font-style:italic;
+    color:@dark-gray;
+    font-size:1.8em;
+    .text-right;
+  }
+}
+
+.copyright{
+  .text-right;
+  padding:0.5em 0;
+  background-color:@dark-gray;
+  color:white;
+  p{
+    margin:0;
+  }
+}
