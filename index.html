@@ -32,19 +32,19 @@
 
         <section id="main_content">
           <h1>
-<a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>About</h1>
+<a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>About</h1>
 
 <p>Crossdata (aka Meta) is a distributed framework that unifies the interaction with batch and streaming sources supporting multiple datastore technologies thanks to its generic architecture and a custom SQL-like language with support for streaming queries. Supporting multiple architectures imposes two main challenges: how to normalize the access to the datastores, and how to cope with datastore limitations. To access multiple technologies Crossdata defines a common unifying interface containing the set of operations that a datastore may support. New connectors can be easily added to increase its connectivity capabilities. Two types of connectors are defined: native and spark-based. Native connectors are faster for simple operations, while Spark-based connectors offer a larger set of functionality. The Crossdata planner decides which connector will be used for any request based its characteristics. We offer a shell, Java/REST APIs, and ODBC for BI.</p>
 
 <h2>
-<a name="full-documentation" class="anchor" href="#full-documentation"><span class="octicon octicon-link"></span></a>Full documentation</h2>
+<a id="full-documentation" class="anchor" href="#full-documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Full documentation</h2>
 
 <p>See the Wiki for full documentation, examples, operational details and other information.</p>
 
 <p>See the <a href="">Javadoc</a> and <a href="_doc/Grammar.md">Language reference</a> for the internal details.</p>
 
 <h2>
-<a name="compiling-crossdata" class="anchor" href="#compiling-crossdata"><span class="octicon octicon-link"></span></a>Compiling Crossdata</h2>
+<a id="compiling-crossdata" class="anchor" href="#compiling-crossdata" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compiling Crossdata</h2>
 
 <p>Compiling Crossdata involves generating a set of files (.tokens, Lexers, and Parsers) from the different grammar files. To automatically build Stratio Crossdata execute the following command:</p>
 
@@ -52,13 +52,13 @@
 </code></pre>
 
 <h2>
-<a name="running-the-comstratiocrossdata-server" class="anchor" href="#running-the-comstratiocrossdata-server"><span class="octicon octicon-link"></span></a>Running the com.stratio.crossdata-server</h2>
+<a id="running-the-comstratiocrossdata-server" class="anchor" href="#running-the-comstratiocrossdata-server" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running the com.stratio.crossdata-server</h2>
 
-<pre><code>   &gt; mvn exec:java -DskipTests -pl crossdata-server -Dexec.mainClass="com.stratio.crossdata.server.MetaApplication"
+<pre><code>   &gt; mvn exec:java -DskipTests -pl crossdata-server -Dexec.mainClass="com.stratio.crossdata.server.CrossdataApplication"
 </code></pre>
 
 <h2>
-<a name="running-the-crosdata-shell" class="anchor" href="#running-the-crosdata-shell"><span class="octicon octicon-link"></span></a>Running the crosdata-shell</h2>
+<a id="running-the-crosdata-shell" class="anchor" href="#running-the-crosdata-shell" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running the crosdata-shell</h2>
 
 <p>The com.stratio.crossdata-shell allows users to launch interactive queries against a set of Crossdata servers. 
 Works both in Unix and Windows.
@@ -82,11 +82,11 @@ The shell features:</p>
 <p>Additionally, you can execute an script upon launching the shell. The script will be executed first, and the prompt will be shown afterwards.</p>
 
 <pre><code>   &gt; mvn exec:java -pl crossdata-shell -Dexec.mainClass="com.stratio.crossdata.sh.Shell" -Dexec
-   .args="--script /path/script.metaql"
+   .args="--script /path/script.xdql"
 </code></pre>
 
 <h2>
-<a name="packaging" class="anchor" href="#packaging"><span class="octicon octicon-link"></span></a>Packaging</h2>
+<a id="packaging" class="anchor" href="#packaging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Packaging</h2>
 
 <pre><code>   &gt; mvn package
 </code></pre>
@@ -94,43 +94,39 @@ The shell features:</p>
 <p>See <a href="https://github.com/Stratio/crossdata/edit/release/0.0.4/meta-dist/src/main/include/README.md">this link</a> to know start/stop the server and the shell from the dist packages</p>
 
 <h2>
-<a name="useful-commands" class="anchor" href="#useful-commands"><span class="octicon octicon-link"></span></a>Useful commands</h2>
+<a id="useful-commands" class="anchor" href="#useful-commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Useful commands</h2>
 
 <p>Once the shell is running, you can exit the program introducing the word <strong>exit</strong> or <strong>quit</strong> in the query prompt. A command help system is available by introducing the command <strong>help</strong>. A help entry is available per command, to check specify help topics use <strong>help command</strong>.</p>
 
 <h2>
-<a name="send-issues-to-jira" class="anchor" href="#send-issues-to-jira"><span class="octicon octicon-link"></span></a>Send issues to Jira</h2>
+<a id="send-issues-to-jira" class="anchor" href="#send-issues-to-jira" aria-hidden="true"><span class="octicon octicon-link"></span></a>Send issues to Jira</h2>
 
 <p>You can send us issues in <a href="https://com.stratio.crossdata.atlassian.net">https://com.stratio.crossdata.atlassian.net</a></p>
 
 <h2>
-<a name="grammar" class="anchor" href="#grammar"><span class="octicon octicon-link"></span></a>Grammar</h2>
+<a id="grammar" class="anchor" href="#grammar" aria-hidden="true"><span class="octicon octicon-link"></span></a>Grammar</h2>
 
 <p>Grammar specification for this release can be found <a href="_doc/Grammar.md">here</a>.</p>
 
 <h2>
-<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting started</h2>
 
 <p>In this <a href="_doc/GettingStarted.md">link</a> you can follow an example of Crossdata with a Cassandra Connector as an access 
-to a Cassandra data store.</p>
+to a Cassandra datastore.</p>
 
 <h2>
-<a name="connectors" class="anchor" href="#connectors"><span class="octicon octicon-link"></span></a>Connectors</h2>
+<a id="connectors" class="anchor" href="#connectors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Connectors</h2>
 
-<p>Crossdata can use this connectors:</p>
+<p><a href="_doc/List-of-Crossdata-Connectors.md">List of Crossdata Connectors</a></p>
 
-<p><a href="https://github.com/Stratio/stratio-connector-cassandra">Cassandra Connector</a></p>
+<p><a href="_doc/InMemory-Connector-Development-Tutorial.md">InMemory Connector development tutorial</a></p>
 
-<p><a href="https://github.com/Stratio/stratio-connector-deep">Stratio Deep Connector</a></p>
+<p><a href="_doc/ConnectorOperations.md">Definition of Connector Operations</a></p>
 
-<p><a href="https://github.com/Stratio/stratio-connector-mongodb">MongoDB Connector</a></p>
-
-<p><a href="https://github.com/Stratio/stratio-connector-elasticsearch">ElasticSearch Connector</a></p>
-
-<p><a href="https://github.com/Stratio/stratio-connector-streaming">Stratio Streaming Connector</a></p>
+<p><a href="https://stratio.github.io/crossdata/contest">Crossdata Connector Challenge</a></p>
 
 <h1>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h1>
 
 <p>Stratio Crossdata is licensed as <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache2</a></p>
 
