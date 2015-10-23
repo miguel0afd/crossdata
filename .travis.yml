@@ -9,10 +9,10 @@ services:
   - mongodb
 
 before_install:
-    - wget https://github.com/miguel0afd/crossdata/blob/mongoDep/dependencies/spark-mongodb_2.10-0.10.0-20151021.142856-5.jar
-    - wget https://github.com/miguel0afd/crossdata/blob/mongoDep/dependencies/spark-mongodb_2.11-0.10.0-20151021.142858-5.jar
-    - mvn install:install-file -Dfile=spark-mongodb_2.10-0.10.0-20151021.142856-5.jar -DgroupId=com.stratio.datasource -DartifactId=spark-mongodb_2.10 -Dversion=0.10.0-SNAPSHOT -Dpackaging=jar
-    - mvn install:install-file -Dfile=spark-mongodb_2.11-0.10.0-20151021.142858-5.jar -DgroupId=com.stratio.datasource -DartifactId=spark-mongodb_2.10 -Dversion=0.10.0-SNAPSHOT -Dpackaging=jar
+    - wget https://github.com/miguel0afd/crossdata/blob/mongoDep/dependencies/spark-mongodb_2.10-0.10.0-SNAPSHOT.jar
+    - wget https://github.com/miguel0afd/crossdata/blob/mongoDep/dependencies/spark-mongodb_2.11-0.10.0-SNAPSHOT.jar
+    - mvn install:install-file -Dfile=spark-mongodb_2.10-0.10.0-SNAPSHOT.jar -DgroupId=com.stratio.datasource -DartifactId=spark-mongodb_2.10 -Dversion=0.10.0-SNAPSHOT -Dpackaging=jar
+    - mvn install:install-file -Dfile=spark-mongodb_2.11-0.10.0-SNAPSHOT.jar -DgroupId=com.stratio.datasource -DartifactId=spark-mongodb_2.11 -Dversion=0.10.0-SNAPSHOT -Dpackaging=jar
 
 script:
 
