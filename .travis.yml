@@ -7,7 +7,11 @@ scala:
 services:
   - cassandra
   - mongodb
-  
+
+before_install:
+    - wget http://sodio.stratio.com:8081/nexus/content/repositories/snapshots/com/stratio/datasource/spark-mongodb_2.10/0.10.0-SNAPSHOT/spark-mongodb_2.10-0.10.0-20151021.142856-5.jar
+    - mvn install:install-file -Dfile=spark-mongodb_2.10-0.10.0-20151021.142856-5.jar
+
 script:
 
   - mvn test -Dmaven.test.failure=true
