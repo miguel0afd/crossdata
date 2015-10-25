@@ -11,16 +11,12 @@ services:
 before_install:
     - git clone https://github.com/Stratio/spark-mongodb.git
     - cd spark-mongodb
-    - mvn install -DskipUTs -DskipITs -DskipTests
-#    - wget https://github.com/miguel0afd/crossdata/blob/mongoDep/dependencies/spark-mongodb_2.10-0.10.0-SNAPSHOT.jar
-#    - wget https://github.com/miguel0afd/crossdata/blob/mongoDep/dependencies/spark-mongodb_2.11-0.10.0-SNAPSHOT.jar
-#    - mvn install:install-file -Dfile=spark-mongodb_2.10-0.10.0-SNAPSHOT.jar -DgroupId=com.stratio.datasource -DartifactId=spark-mongodb_2.10 -Dversion=0.10.0-SNAPSHOT -Dpackaging=jar
-#    - mvn install:install-file -Dfile=spark-mongodb_2.11-0.10.0-SNAPSHOT.jar -DgroupId=com.stratio.datasource -DartifactId=spark-mongodb_2.11 -Dversion=0.10.0-SNAPSHOT -Dpackaging=jar
+    - mvn -q install -DskipUTs -DskipITs -DskipTests
+
 
 script:
 
-#  - mvn test -Dmaven.test.failure=true
-  - mvn -q install
+  - mvn -q test -Dmaven.test.failure=true
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
