@@ -60,6 +60,11 @@
             <groupId>com.stratio.common</groupId>
             <artifactId>common-utils</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+            <version>3.6</version>
+        </dependency>
     </dependencies>
 
     <build>

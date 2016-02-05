@@ -17,14 +17,14 @@ package org.apache.spark.sql.crossdata
 
 import com.stratio.crossdata.connector.NativeScan
 import org.apache.spark.annotation.DeveloperApi
-import org.apache.spark.sql.{SQLContext, DataFrame, Row}
 import org.apache.spark.sql.catalyst.expressions._
-import org.apache.spark.sql.catalyst.plans.logical.{LogicalPlan, LeafNode, Project, Limit, Aggregate}
-import org.apache.spark.sql.crossdata.ExecutionType.{ExecutionType, Default, Native, Spark}
+import org.apache.spark.sql.catalyst.plans.logical.{Aggregate, LeafNode, Limit, LogicalPlan, Project}
+import org.apache.spark.sql.crossdata.ExecutionType.{Default, ExecutionType, Native, Spark}
+import org.apache.spark.sql.crossdata.XDDataFrame.findNativeQueryExecutor
 import org.apache.spark.sql.crossdata.exceptions.NativeExecutionException
 import org.apache.spark.sql.execution.datasources.LogicalRelation
-import XDDataFrame.findNativeQueryExecutor
 import org.apache.spark.sql.types.{ArrayType, StructField, StructType}
+import org.apache.spark.sql.{DataFrame, Row, SQLContext}
 
 import scala.collection.mutable.BufferLike
 import scala.collection.{mutable, immutable, GenTraversableOnce}
