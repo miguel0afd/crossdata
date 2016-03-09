@@ -27,7 +27,6 @@
 
   <artifactId>zeppelin-crossdata</artifactId>
   <packaging>jar</packaging>
-  <version>1.2.0-SNAPSHOT</version>
   <name>Zeppelin: Crossdata</name>
   <description>Zeppelin interpreter for Crossdata</description>
   <url>https://github.com/Stratio/Crossdata</url>
@@ -35,7 +34,7 @@
   <properties>
     <zeppelin.home>zeppelin_home</zeppelin.home>
     <scala.binary.version>2.10</scala.binary.version>
-    <crossdata.version>${project.version}</crossdata.version>
+    <crossdata.version>1.2.0-SNAPSHOT</crossdata.version>
   </properties>
 
   <dependencies>
@@ -60,7 +59,6 @@
       <artifactId>crossdata-driver</artifactId>
       <version>${crossdata.version}</version>
     </dependency>
-
 
     <!--TEST-->
     <dependency>
@@ -98,7 +96,7 @@
         <configuration>
           <forkCount>1</forkCount>
           <reuseForks>false</reuseForks>
-          <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+          <argLine>-Xmx1024m -XX:MaxPermSize=512m</argLine>
         </configuration>
       </plugin>
 
