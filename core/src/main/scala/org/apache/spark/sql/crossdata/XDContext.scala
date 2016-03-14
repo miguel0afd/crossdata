@@ -49,6 +49,7 @@ class XDContext private (@transient val sc: SparkContext,
                 userConfig: Option[Config] = None) extends SQLContext(sc) with Logging  {
   self =>
 
+
   def this(sc: SparkContext) =
     this(sc, None)
 
@@ -73,6 +74,7 @@ class XDContext private (@transient val sc: SparkContext,
   catalogConfig = xdConfig.getConfig(CoreConfig.CatalogConfigKey)
 
 
+  @transient
   override protected[sql] lazy val catalog: XDCatalog = {
 
     import XDContext.{CaseSensitive, DerbyClass}
@@ -167,6 +169,14 @@ class XDContext private (@transient val sc: SparkContext,
   }
 
   /**
+    * Add JAR file from XD Driver to the context
+    * @param path The local path or hdfs path where SparkContext will take the JAR
+    */
+  def addJar(path: String) = {
+    this.sc.addJar(path)
+  }
+
+  /**
    * Drops the table in the persistent catalog.
    * It applies only to metadata, so data do not be deleted.
    *
@@ -224,7 +234,7 @@ object XDContext extends CoreConfig {
   val CatalogConfigKey = "catalog"
   val StreamingConfigKey = "streaming"
   val ClassConfigKey = "class"
-  val CatalogClassConfigKey : String = s"$CatalogConfigKey.$CatalogClassConfigKey"
+  val CatalogClassConfigKey : String = s"$CatalogConfigKey.$ClassConfigKey"
   val StreamingCatalogClassConfigKey : String = s"$StreamingConfigKey.$CatalogConfigKey.$ClassConfigKey"
 
   private val INSTANTIATION_LOCK = new Object()

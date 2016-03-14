@@ -28,7 +28,9 @@ object StreamingConstants {
   /**
    * Receiver
    */
-  //Connection //format "host0:consumerPort0:producerPort0,host1:consumerPort1:producerPort1,host2:consumerPort2:producerPort2"
+  //Connection //format "host0:consumerPort0,host1:consumerPort1,host2:consumerPort2"
+  val ZKConnection = "receiver.kafka.connection"
+  //Connection //format "host0:producerPort0,host1:producerPort1,host2:producerPort2"
   val KafkaConnection = "receiver.kafka.connection"
   //format "topicName1:1,topicName1:2,topicName1:3"
   val KafkaTopic= "receiver.kafka.topic"
@@ -56,7 +58,7 @@ object StreamingConstants {
   val AppJarKey = "appJar"
   val SparkMasterKey = "spark.master"
   val ExternalJarsKey = "jars"
-
+  val SparkCoresMax = "spark.cores.max"
 
   // TODO define and validate mandatory options like spark.master, kafka.topic and groupid, ...
   val listMandatoryEphemeralTableKeys = List(

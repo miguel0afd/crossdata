@@ -35,10 +35,14 @@ object StreamingConfig extends CoreConfig {
 
     val finalOptions = getEphemeralTableOptions(ident, opts)
 
-    val connections = finalOptions(KafkaConnection)
-      .split(",").map(_.split(":")).map{
-      case c if c.size == 3 => ConnectionHostModel(c(0), c(1), c(2))
-    }.toSeq
+    val coonections = extractConnection(finalOptions, ZKConnection) ++ extractConnection(finalOptions, KafkaConnection)
+
+    val connections = Seq(
+      ConnectionHostModel(
+        coonections(0),
+        coonections(1),
+        coonections(2),
+        coonections(3)))
 
     val topics = finalOptions(KafkaTopic)
       .split(",").map(_.split(":")).map{
@@ -59,10 +63,19 @@ object StreamingConfig extends CoreConfig {
 
     val checkpointDirectory = s"${finalOptions(CheckpointDirectory)}/$ident"
     val sparkOpts = finalOptions.filter{case (k, v) => k.startsWith(SparkConfPath)}
+    validateSparkConfig(sparkOpts)
+
     val ephemeralOptions = EphemeralOptionsModel(kafkaOptions, minW, maxW, outFormat, checkpointDirectory, sparkOpts)
 
     EphemeralTableModel(ident, ephemeralOptions, userSchema)
   }
+
+  def extractConnection(options: Map[String, String], connection: String): Seq[String] = {
+    options(connection).split(",").map(_.split(":")).map {
+      case c if c.size == 2 => c(0) ++ c(1)
+    }.toSeq
+  }
+
 
   private def getEphemeralTableOptions(ephTable: String, opts : Map[String, String]): Map[String, String] = {
 
@@ -76,6 +89,12 @@ object StreamingConfig extends CoreConfig {
   def notFound(key: String) = {
     logError(s"Mandatory parameter $key not specified, you have to specify it")
     throw new RuntimeException(key)
+  }
+
+  private def validateSparkConfig(config: Map[String, String]): Unit = {
+    config.get(SparkCoresMax).foreach{ maxCores =>
+      if (maxCores.toInt < 2) throw new RuntimeException(s"At least 2 cores are required to launch streaming applications")
+    }
   }
 
 }
