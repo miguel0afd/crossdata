@@ -15,15 +15,17 @@
  */
 package org.apache.spark.streaming.kafka
 
+import java.io.{File, FileWriter}
 import java.util.Properties
 
 import com.stratio.crossdata.streaming.helpers.CrossdataStreamingHelper
 import com.stratio.crossdata.streaming.helpers.CrossdataStreamingHelper._
 import com.stratio.crossdata.streaming.test.{BaseSparkStreamingXDTest, CommonValues}
 import kafka.consumer.{Consumer, ConsumerConfig, ConsumerConnector}
+import org.apache.spark.util.Utils
 import org.apache.spark.sql.crossdata.XDContext
 import org.apache.spark.sql.crossdata.catalog.ZookeeperStreamingCatalog
-import org.apache.spark.sql.crossdata.models.{ConnectionModel, ConnectionHostModel}
+import org.apache.spark.sql.crossdata.models.ConnectionModel
 import org.apache.spark.streaming.StreamingContext
 import org.apache.spark.{SparkConf, SparkContext}
 import org.junit.runner.RunWith
@@ -50,8 +52,20 @@ class CrossdataStreamingHelperProjectIT extends BaseSparkStreamingXDTest with Co
     sc = SparkContext.getOrCreate(sparkConf)
 
     if (kafkaTestUtils == null) {
+
+      val zk = new EmbeddedZookeeper()
+
       kafkaTestUtils = new KafkaTestUtils
       kafkaTestUtils.setup()
+
+      val fw = new FileWriter("test.txt", false)
+      try {
+        fw.write(" === CrossdataStreamingHelperProjectIT === ")
+        fw.write(s"kafkaTestUtils.brokerAddress=${kafkaTestUtils.brokerAddress}")
+        fw.write(s"kafkaTestUtils.zkAddress=${kafkaTestUtils.zkAddress}")
+      }
+      finally fw.close()
+
       zookeeperConf = Map("connectionString" -> kafkaTestUtils.zkAddress)
       catalogConf = parseZookeeperCatalogConfig(zookeeperConf)
       xDContext = XDContext.getOrCreate(sc, parseCatalogConfig(catalogConf))
